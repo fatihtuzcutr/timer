@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08091a">
+  <title>Online Zamanlayıcı</title>
+  <link rel="stylesheet" href="zamanlayici.css?v=28">
+  <script src="zamanlayici.js?v=28" defer></script>
+</head>
+
+<body>
+  <a href="../tahta/index.php" class="home-link" title="Anasayfa" aria-label="Anasayfa">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+      <path d="M12 3l9 8h-3v9h-4v-6h-4v6H6v-9H3z" />
+    </svg>
+  </a>
+
+  <div id="mainContainer">
+    <button id="fullscreenBtnMain" class="fullscreen-btn" title="Tam Ekran" aria-label="Tam Ekran">
+      <svg viewBox="0 0 24 24" width="32" height="32" fill="#bfc9db" aria-hidden="true">
+        <path d="M4 4h7V2H2v9h2V4zm16 0v7h2V2h-9v2h7zm0 16h-7v2h9v-9h-2v7zM4 20v-7H2v9h9v-2H4z" />
+      </svg>
+    </button>
+
+    <div class="timer-display" id="timerDisplay">00:00:00</div>
+    <div class="date-display" id="dateDisplay"></div>
+
+    <div class="tabs" role="tablist" aria-label="Zamanlayıcı modları">
+      <button type="button" class="tab-btn active" role="tab" aria-selected="true" data-tab="manual">Manuel</button>
+      <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="schedule">Sınavı Planla</button>
+    </div>
+
+    <div class="tab-panel active" data-panel="manual" role="tabpanel">
+      <div class="preset-btns">
+        <button type="button" class="btn-sozel" data-hour="1" data-minute="15"
+          aria-label="Sözel Deneme 1 saat 15 dakika">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" height="16"
+            aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+          </svg>
+          Sözel
+        </button>
+        <button type="button" class="btn-sayisal" data-hour="1" data-minute="20"
+          aria-label="Sayısal Deneme 1 saat 20 dakika">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" height="16"
+            aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+          </svg>
+          Sayısal
+        </button>
+      </div>
+
+      <div class="hint">Süreyi seçip başlatın</div>
+
+      <div class="time-select">
+        <select id="hour" aria-label="Saat seçin">
+          <option value="" disabled selected>Saat</option>
+        </select>
+        <select id="minute" aria-label="Dakika seçin">
+          <option value="" disabled selected>Dakika</option>
+        </select>
+      </div>
+
+      <div class="controls">
+        <button type="button" id="startBtn" aria-label="Zamanlayıcıyı başlat">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <polygon points="5,3 19,12 5,21" />
+          </svg>
+          Başlat
+        </button>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="schedule" role="tabpanel" hidden>
+      <div class="schedule-box">
+        <div class="schedule-row">
+          <label class="schedule-field">
+            <span>Başlangıç</span>
+            <input type="time" id="scheduleTime" step="60">
+          </label>
+          <label class="schedule-field">
+            <span>Tür</span>
+            <select id="scheduleType">
+              <option value="1:15">Sözel (1s 15dk)</option>
+              <option value="1:20">Sayısal (1s 20dk)</option>
+              <option value="manual">Manuel (bitiş saati)</option>
+            </select>
+          </label>
+          <label class="schedule-field" id="scheduleEndField" hidden>
+            <span>Bitiş</span>
+            <input type="time" id="scheduleEnd" step="60">
+          </label>
+          <button type="button" id="scheduleBtn" class="schedule-btn">Planla</button>
+        </div>
+        <div id="scheduleStatus" class="schedule-status" hidden>
+          <span id="scheduleStatusText" class="schedule-status-text"></span>
+          <button type="button" id="cancelScheduleBtn" class="cancel-schedule-btn"
+            aria-label="Planı iptal et">İptal</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <audio id="alarmSound" preload="auto">
+      <source src="alarm.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div id="circleTimerScreen">
+    <button id="fullscreenBtn" class="fullscreen-btn" title="Tam Ekran" aria-label="Tam Ekran">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 4h7V2H2v9h2V4zm16 0v7h2V2h-9v2h7zm0 16h-7v2h9v-9h-2v7zM4 20v-7H2v9h9v-2H4z" />
+      </svg>
+    </button>
+
+    <div class="circle-timer-content">
+      <div class="circle-timer-svg-wrap">
+        <svg id="circleSvg" viewBox="0 0 1000 1000" aria-hidden="true">
+          <circle cx="500" cy="500" r="480" stroke="rgba(168,216,240,0.16)" stroke-width="16" fill="none" />
+          <circle id="progressCircle" cx="500" cy="500" r="480" stroke="#8dcaf7" stroke-width="16" fill="none"
+            stroke-linecap="round" stroke-dasharray="3016" stroke-dashoffset="0" transform="rotate(-90 500 500)" />
+        </svg>
+
+        <div class="circle-timer-center">
+          <div id="circleTimerWarning" class="circle-timer-warning" role="status" aria-live="polite" hidden></div>
+          <div id="circleTimerLabel" class="circle-timer-label">Deneme Başladı ✍️</div>
+          <div id="circleTimerTime" class="circle-timer-time" role="timer" aria-live="polite">00:00:00</div>
+          <div id="circleTimerAlarm" class="circle-timer-alarm">
+            <span class="bell-icon" aria-hidden="true">&#128276;</span>
+            <span id="alarmLabel">Bitiş</span>
+            <span id="alarmTimeText"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="circle-actions">
+        <button type="button" id="circlePauseBtn" aria-label="Duraklat">Duraklat</button>
+        <button type="button" id="circleResetBtn" aria-label="Sıfırla">Sıfırla</button>
+        <button type="button" id="exitBtn" aria-label="Ana ekrana geri dön">Geri Dön</button>
+        <button type="button" id="stopAlarmBtn" hidden aria-label="Alarmı durdur">Alarmı Durdur</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
