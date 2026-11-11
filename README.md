@@ -1,53 +1,38 @@
 # ⏱️ Timer — Online Zamanlayıcı
 
-Basit ve erişilebilir bir zamanlayıcı uygulaması. Tarayıcı üzerinden çevrim içi olarak kullanılabilir; günlük çalışmalar, eğitim etkinlikleri ve zaman yönetimi için tasarlanmıştır.
+Basit ve kullanışlı bir web tabanlı zamanlayıcı uygulaması.
 
-🔗 **[Canlı Uygulamayı Kullan](https://giresunfenbilimleri.com/tools/timer/)**
+🔗 **[Canlı Demo](https://fatihtuzcu.com/projelerim/timer/index.html)**
 
 ## 🚀 Proje Hakkında
 
-Timer, zamanlayıcı işlevlerini web ortamına taşıyan kişisel bir yazılım projesidir. Projenin amacı, kullanıcıların zamanla ilgili işlemlerini kolayca gerçekleştirebileceği pratik bir arayüz sunmaktır.
+Timer, tarayıcı üzerinden erişilebilen bir zamanlayıcı projesidir. Günlük çalışmalar, eğitim etkinlikleri ve zaman yönetimi amacıyla kullanılabilir.
 
 ## ✨ Özellikler
 
-- ⏱️ Web tabanlı zamanlayıcı deneyimi
+- ⏱️ Web tabanlı zamanlayıcı
 - 🌐 Tarayıcı üzerinden erişim
 - 🎓 Eğitim ve çalışma süreçlerinde kullanım
-- 💻 Kişisel yazılım portföyünün bir parçası olarak geliştirilen proje
-
-> Not: Bu liste genel proje tanımını içerir. Duraklatma, sesli uyarı, tam ekran ve benzeri özellikler kaynak kodunda doğrulandıktan sonra eklenmelidir.
 
 ## 🌍 Canlı Demo
 
-Uygulamayı kurulum yapmadan tarayıcı üzerinden deneyebilirsin:
+Uygulamayı kurulum yapmadan deneyebilirsin:
 
-**[Timer uygulamasını aç →](https://giresunfenbilimleri.com/tools/timer/)**
-
-## 🛠️ Kullanılan Teknolojiler
-
-Kullanılan teknolojiler, projenin kaynak koduna göre bu bölümde listelenmelidir.
-
-- **Frontend:** Projede kullanılan arayüz teknolojisi
-- **Programlama dili:** Projede kullanılan dil
-- **Hosting:** [giresunfenbilimleri.com](https://giresunfenbilimleri.com/)
+**[Timer uygulamasını aç →](https://fatihtuzcu.com/projelerim/timer/index.html)**
 
 ## 📦 Kaynak Kodları
 
-Projeyi incelemek ve geliştirme sürecini takip etmek için GitHub deposunu ziyaret edebilirsin.
+Projenin kaynak kodlarına GitHub üzerinden ulaşabilirsin:
 
-**[GitHub deposunu görüntüle →](https://github.com/fatihtuzcutr/timer)**
-
-## 🎯 Projenin Amacı
-
-Bu proje, web teknolojileriyle kullanışlı araçlar geliştirme ve gerçek projeleri çevrim içi ortamda yayımlama çalışmalarının bir parçasıdır.
+**[GitHub deposunu görüntüle](https://github.com/fatihtuzcutr/timer)**
 
 ## 👨‍💻 Geliştirici
 
 **Fatih Tuzcu**
 
+- Kişisel web sitesi: [fatihtuzcu.com](https://fatihtuzcu.com/)
 - GitHub: [@fatihtuzcutr](https://github.com/fatihtuzcutr)
-- Canlı proje: [Timer](https://giresunfenbilimleri.com/tools/timer/)
 
 ---
 
-⭐ Projeyi faydalı bulduysan GitHub deposuna yıldız vererek destek olabilirsin.
+⭐ Projeyi faydalı bulduysan GitHub deposuna yıldız verebilirsin.
